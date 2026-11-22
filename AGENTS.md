@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Imported application
+- During source imports, preserve external data/auth providers and this project's Lovable identity and pinned TanStack versions to avoid an accidental backend cutover or framework drift.
