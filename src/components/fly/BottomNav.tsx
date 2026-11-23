@@ -1,4 +1,4 @@
-import { Home, MessageCircle, Clapperboard, User, Plus } from "lucide-react";
+import { Home, MessageCircle, Clapperboard, User, Plus, Search } from "lucide-react";
 
 const LEFT_TABS = [
   { id: "home", label: "Home", icon: Home },
@@ -15,25 +15,24 @@ const TABS = [...LEFT_TABS, ...RIGHT_TABS];
 export type TabId = (typeof TABS)[number]["id"];
 
 function NavButton({
-  id,
   label,
   icon: Icon,
-  active,
-  onChange,
+  isActive,
+  onClick,
   badge,
 }: {
-  id: TabId;
   label: string;
   icon: typeof Home;
-  active: TabId;
-  onChange: (tab: TabId) => void;
+  isActive: boolean;
+  onClick: () => void;
   badge?: boolean;
 }) {
-  const isActive = active === id;
   return (
     <button
-      onClick={() => onChange(id)}
-      className="flex flex-col items-center justify-center gap-1 flex-1 h-full transition-transform active:scale-90"
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="flex min-w-0 flex-1 flex-col items-center justify-center gap-1 h-full transition-transform active:scale-90"
     >
       <span className="relative">
         <Icon
@@ -62,34 +61,52 @@ export function BottomNav({
   active,
   onChange,
   onCreate,
+  onSearch,
+  searching,
   messagesBadge,
 }: {
   active: TabId;
   onChange: (tab: TabId) => void;
   onCreate: () => void;
+  onSearch: () => void;
+  searching: boolean;
   messagesBadge?: boolean;
 }) {
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 backdrop-blur-xl border-t border-gray-100 z-40">
-      <div className="flex items-center justify-around h-16 px-2">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-100 pb-[env(safe-area-inset-bottom)] z-40">
+      <div className="flex items-center justify-around h-16 px-1">
         {LEFT_TABS.map((t) => (
-          <NavButton key={t.id} {...t} active={active} onChange={onChange} />
+          <NavButton
+            key={t.id}
+            label={t.label}
+            icon={t.icon}
+            isActive={active === t.id}
+            onClick={() => onChange(t.id)}
+          />
         ))}
         <button
+          type="button"
           onClick={onCreate}
           aria-label="New post"
-          className="flex-1 flex items-center justify-center h-full"
+          className="flex min-w-0 flex-1 items-center justify-center h-full"
         >
-          <span className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-300 flex items-center justify-center transition-transform active:scale-90">
+          <span className="w-11 h-11 rounded-full bg-gradient-to-br from-sky-500 to-cyan-500 text-white shadow-lg shadow-sky-300 flex items-center justify-center transition-transform active:scale-90">
             <Plus size={26} />
           </span>
         </button>
+        <NavButton
+          label="Search"
+          icon={Search}
+          isActive={searching}
+          onClick={onSearch}
+        />
         {RIGHT_TABS.map((t) => (
           <NavButton
             key={t.id}
-            {...t}
-            active={active}
-            onChange={onChange}
+            label={t.label}
+            icon={t.icon}
+            isActive={active === t.id}
+            onClick={() => onChange(t.id)}
             badge={t.id === "messages" && !!messagesBadge}
           />
         ))}

@@ -129,7 +129,7 @@ function Feed({
   }, [refresh, pulling]);
 
   return (
-    <div className="pb-20">
+    <div>
       {(pull > 0 || pulling) && (
         <div
           className="fixed left-0 right-0 top-14 z-20 flex justify-center pointer-events-none"
@@ -434,7 +434,7 @@ function Shell() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-md min-h-screen bg-white relative">
+    <div className="mx-auto w-full max-w-md min-h-screen bg-white relative pb-24">
       {aiOpen ? (
         <FlyAIPage onBack={() => setAiOpen(false)} onOpenChat={(p) => { setAiOpen(false); openChat(p); }} />
       ) : callHistory ? (
@@ -511,9 +511,18 @@ function Shell() {
       <BottomNav
         active={tab}
         messagesBadge={hasUnreadMessages}
+        searching={searching}
+        onSearch={() => {
+          setViewProfile(null);
+          setGroupChat(null);
+          setNotifying(false);
+          setCallHistory(false);
+          setSearching(true);
+        }}
         onChange={(next) => {
           setViewProfile(null);
           setGroupChat(null);
+          setSearching(false);
           setNotifying(false);
           setCallHistory(false);
           setTab(next);

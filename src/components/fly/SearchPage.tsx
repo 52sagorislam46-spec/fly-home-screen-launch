@@ -56,7 +56,7 @@ export function SearchPage({
   }, [users, term]);
 
   return (
-    <div className="pb-20">
+    <div>
       <header className="sticky top-0 bg-white/90 backdrop-blur-xl border-b border-gray-100 px-4 h-16 flex items-center gap-2 z-10">
         {onBack && (
           <button
