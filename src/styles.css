@@ -484,3 +484,26 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar { display
 .agro-theme .agro-cat-3 { background: oklch(0.93 0.07 230); color: oklch(0.42 0.13 240); }
 .agro-theme .agro-cat-4 { background: oklch(0.93 0.08 30); color: oklch(0.5 0.17 30); }
 .agro-theme .agro-cat-5 { background: oklch(0.93 0.07 330); color: oklch(0.45 0.15 340); }
+
+/* ---------- Fly splash screen ---------- */
+.fly-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,oklch(0.97 0.03 300),oklch(1 0 0) 60%);animation:flySplashIn .35s ease-out both}
+.fly-splash-glow{position:absolute;width:260px;height:260px;border-radius:9999px;filter:blur(50px);
+  background:conic-gradient(from 0deg,oklch(0.62 0.22 300),oklch(0.65 0.2 250),oklch(0.7 0.2 340),oklch(0.62 0.22 300));
+  opacity:.35;animation:flySpin 6s linear infinite,flyPulse 2.4s ease-in-out infinite}
+.fly-splash-logo-wrap{position:relative;animation:flyPop .9s cubic-bezier(.2,1.4,.4,1) both}
+.fly-splash-logo{width:112px;height:112px;border-radius:28px;box-shadow:0 18px 40px -12px oklch(0.45 0.2 300 / .55);
+  animation:flyBreathe 2.4s ease-in-out .9s infinite}
+.fly-splash-bottom{position:absolute;bottom:calc(56px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:12px}
+.fly-splash-bar{width:140px;height:4px;border-radius:9999px;background:oklch(0.92 0.03 300);overflow:hidden}
+.fly-splash-bar span{display:block;width:40%;height:100%;border-radius:9999px;
+  background:linear-gradient(90deg,oklch(0.62 0.22 300),oklch(0.65 0.2 250),oklch(0.7 0.2 340));animation:flyBar 1.3s ease-in-out infinite}
+.fly-splash-text{font-size:12px;letter-spacing:.18em;font-weight:600;text-transform:uppercase;
+  background:linear-gradient(90deg,oklch(0.5 0.2 300),oklch(0.55 0.2 250));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes flySplashIn{from{opacity:0}to{opacity:1}}
+@keyframes flyPop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+@keyframes flyBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes flySpin{to{transform:rotate(360deg)}}
+@keyframes flyPulse{0%,100%{opacity:.25}50%{opacity:.5}}
+@keyframes flyBar{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+@media (prefers-reduced-motion:reduce){.fly-splash *{animation:none!important}}

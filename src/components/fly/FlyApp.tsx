@@ -14,6 +14,7 @@ import { AuthProvider, useAuth } from "./AuthContext";
 import { CallProvider } from "./CallProvider";
 import { GroupCallProvider } from "./GroupCallProvider";
 import { AuthPage } from "./AuthPage";
+import { SplashScreen } from "./SplashScreen";
 import { EmailTwoFactorGate, emailGatePassed } from "./EmailTwoFactorGate";
 import { suspendedUntil } from "./moderation";
 import { BottomNav, type TabId } from "./BottomNav";
@@ -371,10 +372,7 @@ function Shell() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <Loader2 className="animate-spin text-sky-500" size={28} />
-      </div>
-    );
+<SplashScreen />);
   }
 
   if (!user) return <AuthPage />;
