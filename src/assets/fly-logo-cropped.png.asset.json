@@ -1,11 +1,11 @@
 {
-  "asset_id": "9c320a1c-d7e6-4dc6-8afe-31f0b6fc54c5",
+  "version": 1,
+  "asset_id": "44dc2de6-cd95-47c0-9951-37cfd94bda43",
+  "project_id": "5adedb44-bbf4-4077-a2ac-21ba6027a38a",
+  "url": "/__l5e/assets-v1/44dc2de6-cd95-47c0-9951-37cfd94bda43/fly-logo-clean.png",
+  "r2_key": "a/v1/5adedb44-bbf4-4077-a2ac-21ba6027a38a/44dc2de6-cd95-47c0-9951-37cfd94bda43/fly-logo-clean.png",
+  "original_filename": "fly-logo-clean.png",
+  "size": 378585,
   "content_type": "image/png",
-  "created_at": "2026-11-17T02:18:44Z",
-  "original_filename": "fly-logo-cropped.png",
-  "project_id": "02ab751e-1919-48d6-8a00-d563b7a5e702",
-  "r2_key": "a/v1/02ab751e-1919-48d6-8a00-d563b7a5e702/9c320a1c-d7e6-4dc6-8afe-31f0b6fc54c5/fly-logo-cropped.png",
-  "size": 391201,
-  "url": "/__l5e/assets-v1/9c320a1c-d7e6-4dc6-8afe-31f0b6fc54c5/fly-logo-cropped.png",
-  "version": 1
+  "created_at": "2026-11-23T14:29:34Z"
 }
