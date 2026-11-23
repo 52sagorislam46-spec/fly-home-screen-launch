@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { initSingleVideoPlayback } from "../lib/singleVideo";
 import { setupOffline } from "../lib/offline";
+import { InstallBanner } from "../components/fly/InstallBanner";
 
 function NotFoundComponent() {
   return (
@@ -135,6 +136,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <InstallBanner />
     </QueryClientProvider>
   );
 }
