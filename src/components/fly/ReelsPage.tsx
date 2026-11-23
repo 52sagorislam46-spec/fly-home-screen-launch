@@ -1,7 +1,7 @@
 import { uploadToCloudinary } from "../../lib/firebase";
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type MouseEvent } from "react";
 import { onReelSeen } from "./ads";
-import { Check, Copy, Download, Eye, Heart, ImagePlus, Loader2, MessageCircle, MoreHorizontal, Music2, Pause, Play, RotateCcw, RotateCw, Search, Send, Trash2, Volume2, VolumeX } from "lucide-react";
+import { Check, Copy, Download, Heart, ImagePlus, Loader2, MessageCircle, MoreHorizontal, Music2, Pause, Play, RotateCcw, RotateCw, Search, Send, Trash2, Volume2, VolumeX } from "lucide-react";
 import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, updateDoc } from "firebase/firestore";
 import { db, secureUrl } from "../../lib/firebase";
 import { Avatar } from "./Avatar";
@@ -17,7 +17,6 @@ import { fetchProfile, sendMessage } from "./chat";
 import { timeAgo } from "../../lib/time";
 import { SaveButton } from "./extras";
 import type { Comment, Post, UserProfile } from "./types";
-import { StarGiftButton } from "./StarGift";
 import { isVipOf, ReelVipLock } from "./vip";
 import { isAdminVip, UserBadges } from "./badges";
 import { ProductCard } from "./shop";
@@ -537,7 +536,7 @@ function Reel({
         </div>
       )}
 
-      <div className="absolute right-2 bottom-14 z-10 flex flex-col items-center gap-4 text-white [&_svg]:drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] [&_span]:drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] [&_svg]:[stroke-width:1.75] [&_button]:min-w-11">
+      <div className="absolute right-2 bottom-8 z-10 flex flex-col items-center gap-4 text-white [&_svg]:drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] [&_span]:drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] [&_svg]:[stroke-width:1.75] [&_button]:min-w-11">
         <button onClick={toggleLike} className="flex flex-col items-center gap-1 active:scale-90 transition-transform">
           <Heart size={28} className={liked ? "text-rose-500 fill-rose-500" : ""} />
         </button>
@@ -559,12 +558,7 @@ function Reel({
           <Send size={26} />
           <span className="text-[13px] font-semibold">{formatViews(shareCount)}</span>
         </button>
-        <StarGiftButton creatorId={post.authorId} creatorName={post.authorName} postId={post.id} variant="reel" />
         <SaveButton postId={post.id} size={26} className="flex flex-col items-center" />
-        <div className="flex flex-col items-center gap-1">
-          <Eye size={26} />
-          <span className="text-[13px] font-semibold">{formatViews(post.views ?? 0)}</span>
-        </div>
         <button
           onClick={saveVideo}
           disabled={saving}
